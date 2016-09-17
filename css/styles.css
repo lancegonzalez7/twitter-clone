@@ -65,6 +65,9 @@ body {
 	font-size: 13px;
 	font-weight: bold;
 }
+.hidden {
+	display: none;
+}
 
 /* PAGE STRUCTURE */
 #page-container {
@@ -258,5 +261,3 @@ body {
 				top: 0;
 				left: 0;
 			}
-
-
