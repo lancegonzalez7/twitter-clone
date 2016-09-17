@@ -1,6 +1,8 @@
 $(document).ready(function() {
     $("#tweet-controls").addClass("hidden");
     $(".tweet-actions").addClass("hidden");
+    $(".stats").addClass("hidden");
+    $(".reply").addClass("hidden");
 
     $("#tweet-content .tweet-compose").on("click", function() {
         $("#tweet-content #tweet-controls").removeClass("hidden");
@@ -65,30 +67,30 @@ $(document).ready(function() {
             '<p class="tweet-text">' + content + '</p>' +
             '<div class="tweet-actions">' +
             '<ul>' +
-            '    <li><span class="icon action-reply"></span> Reply</li>' +
-            '    <li><span class="icon action-retweet"></span> Retweet</li>' +
-            '    <li><span class="icon action-favorite"></span> Favorite</li>' +
-            '    <li><span class="icon action-more"></span> More</li>' +
+            '<li><span class="icon action-reply"></span> Reply</li>' +
+            '<li><span class="icon action-retweet"></span> Retweet</li>' +
+            '<li><span class="icon action-favorite"></span> Favorite</li>' +
+            '<li><span class="icon action-more"></span> More</li>' +
             '</ul>' +
             '</div>' +
-            '<div class="stats">' +
-            '    <div class="retweets">' +
-            '        <p class="num-retweets">0</p>' +
-            '        <p>RETWEETS</p>' +
-            '   </div>' +
-            '    <div class="favorites">' +
-            '        <p class="num-favorites">0</p>' +
-            '        <p>FAVORITES</p>' +
-            '    </div>' +
-            '    <div class="users-interact">' +
-            '        <div>' +
-            '       </div>' +
-            '    </div>' +
-            '    <div class="time">' +
-            timeStamp();
-        '    </div>  ' +
+            '<div class="stats hidden">' +
+            '<div class="retweets">' +
+            '<p class="num-retweets">0</p>' +
+            '<p>RETWEETS</p>' +
+            '</div>' +
+            '<div class="favorites">' +
+            '<p class="num-favorites">0</p>' +
+            '<p>FAVORITES</p>' +
+            '</div>' +
+            '<div class="users-interact">' +
+            '<div>' +
+            '</div>' +
+            '</div>' +
+            '<div class="time">' +
+            timeStamp(); +
         '</div>' +
-        '<div class="reply">' +
+        '</div>' +
+        '<div class="reply hidden">' +
         '<img class="avatar" src="' + user.pic + '" />' +
             '<textarea class="tweet-compose" placeholder="Reply to ' + user.username + '"/></textarea>' +
             '</div>' +
@@ -108,11 +110,16 @@ $(document).ready(function() {
         $(".tweet").find($(".tweet-actions")).addClass("hidden");
     });
 
-    $("#stream").on("mouseenter",'.tweet', function() {
+    $("#stream").on("mouseenter", '.tweet', function() {
         $(this).find($(".tweet-actions")).removeClass("hidden");
     });
-    $("#stream").on("mouseleave",'.tweet', function() {
+    $("#stream").on("mouseleave", '.tweet', function() {
         $(this).find($(".tweet-actions")).addClass("hidden");
+    });
+
+    $("#stream").on("click", '.tweet', function() {
+        $(this).find($(".stats")).toggle('fast');
+        $(this).find($(".reply")).toggle("fast");
     });
 
 
